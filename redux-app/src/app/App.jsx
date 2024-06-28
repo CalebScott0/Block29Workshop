@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="App">
     <nav>
       <Link to="/">Home</Link>
       <Link to="/all-players">All Players</Link>
@@ -22,7 +22,7 @@ function App() {
         <Route path="/player/:player_id" element={<SinglePlayer />}></Route>
         {/* <NewPlayerForm /> */}
       </Routes>
-    </>
+    </div>
   );
 }
 
