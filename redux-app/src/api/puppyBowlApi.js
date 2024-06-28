@@ -16,9 +16,12 @@ const puppyBowlApi = createApi({
     fetchPlayers: builder.query({
       query: () => "/",
     }),
+    getPlayerById: builder.query({
+      query: (id) => `/${id}`,
+    }),
   }),
 });
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export default puppyBowlApi;
-export const { useFetchPlayersQuery } = puppyBowlApi;
+export const { useFetchPlayersQuery, useGetPlayerByIdQuery } = puppyBowlApi;
