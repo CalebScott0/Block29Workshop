@@ -1,13 +1,12 @@
 import { useFetchPlayersQuery } from "../api/puppyBowlApi";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
-import SinglePlayer from "./SinglePlayer";
+import { useNavigate } from "react-router-dom";
 
 export default function AllPlayers() {
   // When the component is first rendered, it will start the API fetch
   // It will re-render each time the fetch status changes (e.g., "loading", "data arrived", "error")
   const { data = {}, error, isLoading } = useFetchPlayersQuery();
-
+  const navigate = useNavigate();
   return (
     <div className="players">
       {error && <p className="alt">Something went wrong, please try again!</p>}
@@ -29,7 +28,12 @@ export default function AllPlayers() {
                 <span className="bold">Status: </span>
                 {player["status"]}
               </p>
-              <Link className="button" to={`/player/${player["id"]}`}>See more info</Link>
+              <button
+                className="button"
+                onClick={() => navigate(`/player/${player["id"]}`)}
+              >
+                See more info
+              </button>
             </div>
           </div>
         ))}
