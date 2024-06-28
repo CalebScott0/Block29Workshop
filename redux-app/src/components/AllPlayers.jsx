@@ -1,4 +1,5 @@
 import { useFetchPlayersQuery } from "../api/puppyBowlApi";
+import SearchBar from './SearchBar'
 
 export default function AllPlayers() {
   // When the component is first rendered, it will start the API fetch
@@ -9,6 +10,7 @@ export default function AllPlayers() {
     <div className="players">
       {error && <p>Something went wrong, please try again!</p>}
       {isLoading && <p>Loading Players...</p>}
+      {/* <SearchBar /> */}
       {data.data &&
         data.data.players.map((player) => (
           <div key={player.id} className="player-card">
