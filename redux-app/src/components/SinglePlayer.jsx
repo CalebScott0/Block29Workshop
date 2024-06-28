@@ -12,4 +12,3 @@ export default function SinglePlayer() {
     </div>
   );
 }
-// https://reactrouter.com/en/main/components/link
