@@ -14,6 +14,9 @@ export default function NewPlayerForm() {
   });
   const navigate = useNavigate();
   const onSubmit = (data, event) => {
+    if(!data.teamId) {
+      data.teamId = null
+    }
     event.preventDefault();
     try {
       addPlayer(data);
