@@ -14,9 +14,17 @@
 }
 
 .alt {
-  margin-top: 10px;
-  text-align: center;
+  margin-top: 1em;
   font-size: 2rem;
+}
+
+.loading {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
 }
 
 h2 {
@@ -117,11 +125,11 @@ nav a {
 
 .single-player {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   margin-top: 2em;
 }
 .single-player .single-player-card {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
 }
 .single-player .single-player-image-container {
@@ -158,8 +166,8 @@ nav a {
   margin-right: 4px;
 }
 .form input[type=submit], .form button {
-  width: 30%;
-  height: 2em;
+  width: 35%;
+  padding: 0.5em 0;
 }
 .form fieldset {
   border: none;

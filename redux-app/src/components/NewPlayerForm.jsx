@@ -1,8 +1,10 @@
 import { useAddPlayerMutation } from "../api/puppyBowlApi";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 export default function NewPlayerForm() {
+  
+  const [err, setErr] = useState(null);
   const [addPlayer] = useAddPlayerMutation();
 
   const {
@@ -23,15 +25,15 @@ export default function NewPlayerForm() {
   const navigate = useNavigate();
 
   const onSubmit = (data, event) => {
+    event.preventDefault();
     if (!data.teamId) {
       data.teamId = null;
     }
-    event.preventDefault();
     try {
       addPlayer(data);
-      // navigate('/all-players');
     } catch (error) {
       console.log(error);
+      setErr("Unable to add player, please try again!");
     }
   };
   const handleClick = () => {
@@ -39,6 +41,7 @@ export default function NewPlayerForm() {
       navigate("/all-players");
     } catch (error) {
       console.log(error);
+      setErr("Trouble loading all players, please try again!");
     }
   };
 
@@ -49,6 +52,7 @@ export default function NewPlayerForm() {
   return (
     <div className="form">
       <h2>Player Sign-Up Form</h2>
+      {err && <h2 className="error">{err}</h2>}
       <form id="new-player-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Name:

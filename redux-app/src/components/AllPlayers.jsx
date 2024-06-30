@@ -13,6 +13,17 @@ export default function AllPlayers() {
   // component state for player search feature
   const [searchParamter, setSearchParameter] = useState("");
 
+  const [err, setErr] = useState(null);
+
+  const handleClick = (id) => {
+    try {
+      navigate(`/player/${id}`);
+    } catch (error) {
+      setErr("Unable to load player, please try again!");
+      console.log(error);
+    }
+  };
+
   let newData;
   if (data.data) {
     newData = data.data.players;
@@ -29,11 +40,12 @@ export default function AllPlayers() {
 
   return (
     <div className="players">
-      {error && <p className="alt">Something went wrong, please try again!</p>}
-      {isLoading && <p className="alt">Loading Players...</p>}
+      {error && <p className="alt error bold">Something went wrong, please try again!</p>}
+      {isLoading && <p className="alt loading bold">Loading Players...</p>}
       {playersToDisplay && (
         <div className="player-heading">
           <h2>Click on a player to see more details</h2>
+          {err && <h2 className="error">{err}</h2>}
           <SearchBar
             searchParamter={searchParamter}
             setSearchParameter={setSearchParameter}
@@ -45,7 +57,7 @@ export default function AllPlayers() {
           <div
             key={player.id}
             className="player-card"
-            onClick={() => navigate(`/player/${player["id"]}`)}
+            onClick={() => handleClick(player.id)}
           >
             <div className="player-image-container">
               <img src={player["imageUrl"]} alt={player["name"]} />
@@ -74,10 +86,7 @@ export default function AllPlayers() {
                   {"Unassigned"}
                 </p>
               )}
-              <button
-                className="button"
-                onClick={() => navigate(`/player/${player["id"]}`)}
-              >
+              <button className="button" onClick={() => handleClick(player.id)}>
                 See more info
               </button>
             </div>
