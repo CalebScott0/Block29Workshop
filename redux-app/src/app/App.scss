@@ -1,13 +1,19 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#root {
+  width: 100vw;
 }
 .bold {
   font-weight: 600;
 }
 .alt {
+  margin-top: 10px;
   text-align: center;
-  font-size: 32px;
+  font-size: 2rem;
 }
 
 .players {
@@ -17,10 +23,18 @@
   align-items: center;
   .player-card {
     width: 360px;
-    height: 380px;
+    height: 420px;
     margin: 10px;
     overflow: hidden;
     border: 5px solid black;
+    white-space: nowrap;
+  }
+  .player-card:hover {
+    white-space: normal;
+    h2,
+    p {
+      width: 300px;
+    }
   }
 
   .player-image-container {
@@ -39,16 +53,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 4px;
+    text-align: center;
+    h2,
+    p {
+      padding: 1px;
+      overflow: hidden;
+      cursor: pointer;
+      width: 260px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
   }
   .button {
-    font: bold 11px Arial;
+    font: bold 0.8em Arial;
     text-decoration: none;
     background-color: #eeeeee;
     color: #333333;
-    padding: 2px 6px 2px 6px;
+    padding: 2px 6px;
+    margin-top: 5px;
     border-top: 1px solid #cccccc;
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #cccccc;
+  }
+}
+
+.single-player {
+  height: 100vh;
+  width: 100vw;
+  .single-player-card {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .single-player-image-container {
+    height: 410px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  img {
+    width: 400px;
+    height: calc(100% - 10px);
+    object-fit: cover;
   }
 }

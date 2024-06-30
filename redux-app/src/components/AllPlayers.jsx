@@ -24,10 +24,24 @@ export default function AllPlayers() {
                 <span className="bold">Breed: </span>
                 {player["breed"]}
               </p>
-              <p>
-                <span className="bold">Status: </span>
-                {player["status"]}
-              </p>
+              {player.teamId === 730 && (
+                <p>
+                  <span className="bold">Team: </span>
+                  {"Ruff"}
+                </p>
+              )}
+              {player.teamId === 731 && (
+                <p>
+                  <span className="bold">Team: </span>
+                  {"Fluff"}
+                </p>
+              )}
+              {!player.teamId && (
+                <p>
+                  <span className="bold">Team: </span>
+                  {"Unassigned"}
+                </p>
+              )}
               <button
                 className="button"
                 onClick={() => navigate(`/player/${player["id"]}`)}
