@@ -26,6 +26,9 @@
   color: red;
   text-align: center;
 }
+.form-error {
+  color: red;
+}
 
 h2 {
   padding: 0.5em 0;
