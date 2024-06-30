@@ -31,6 +31,23 @@ nav a {
   color: white;
 }
 
+.button {
+  font: bold 0.8em Arial;
+  text-decoration: none;
+  background-color: #eeeeee;
+  color: #333333;
+  padding: 2px 6px;
+  margin-top: 5px;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #cccccc;
+}
+
+.search-bar {
+  font-size: 1.25em;
+}
+
 .players {
   display: flex;
   flex-wrap: wrap;
@@ -39,9 +56,12 @@ nav a {
 }
 .players .player-heading {
   width: 100%;
-  font-size: 2em;
   text-align: center;
   padding: 1em 0;
+}
+.players .player-heading h2 {
+  padding: 0.5em 0;
+  font-size: 2em;
 }
 .players .player-card {
   width: 360px;
@@ -88,18 +108,6 @@ nav a {
 .players .player-details h2 {
   font-size: 1.5rem;
   letter-spacing: 1px;
-}
-.players .button {
-  font: bold 0.8em Arial;
-  text-decoration: none;
-  background-color: #eeeeee;
-  color: #333333;
-  padding: 2px 6px;
-  margin-top: 5px;
-  border-top: 1px solid #cccccc;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #cccccc;
 }
 
 .single-player {

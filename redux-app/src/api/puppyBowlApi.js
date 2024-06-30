@@ -15,13 +15,36 @@ const puppyBowlApi = createApi({
   endpoints: (builder) => ({
     fetchPlayers: builder.query({
       query: () => "/",
+      //allows RTK query to cache our results and call the API as needed
+      providesTags: ["players"],
     }),
     getPlayerById: builder.query({
       query: (id) => `/${id}`,
+      providesTags: ["player"],
+    }),
+    deletePlayer: builder.mutation({
+      query: (id) => ({
+        url: `/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["players","player"],
+    }),
+    addPlayer: builder.mutation({
+      query: (body) => ({
+        url: "/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["players"],
     }),
   }),
 });
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export default puppyBowlApi;
-export const { useFetchPlayersQuery, useGetPlayerByIdQuery } = puppyBowlApi;
+export const {
+  useFetchPlayersQuery,
+  useGetPlayerByIdQuery,
+  useDeletePlayerMutation,
+  useAddPlayerMutation,
+} = puppyBowlApi;

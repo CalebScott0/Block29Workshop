@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useFetchPlayersQuery } from "../api/puppyBowlApi";
 import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
@@ -7,14 +8,36 @@ export default function AllPlayers() {
   // It will re-render each time the fetch status changes (e.g., "loading", "data arrived", "error")
   const { data = {}, error, isLoading } = useFetchPlayersQuery();
   const navigate = useNavigate();
+
+  // component state for player search feature
+  const [searchParamter, setSearchParameter] = useState("");
+
+  let newData;
+  if(data.data) {
+    newData = data.data.players
+  }
+ 
+  const playersToDisplay = (searchParamter && newData
+      ? newData.filter((player) => {
+          return player.name.toLowerCase().includes(searchParamter.toLowerCase());
+        })
+      : newData);
+  
   return (
     <div className="players">
       {error && <p className="alt">Something went wrong, please try again!</p>}
       {isLoading && <p className="alt">Loading Players...</p>}
-      {/* <SearchBar /> */}
-      {data.data && <h2 className="player-heading">Click on a player to see more details</h2>}
-      {data.data &&
-        data.data.players.map((player) => (
+      {playersToDisplay && (
+        <div className="player-heading">
+          <h2>Click on a player to see more details</h2>
+          <SearchBar
+            searchParamter={searchParamter}
+            setSearchParameter={setSearchParameter}
+          />
+        </div>
+      )}
+      {playersToDisplay &&
+        playersToDisplay.map((player) => (
           <div
             key={player.id}
             className="player-card"
