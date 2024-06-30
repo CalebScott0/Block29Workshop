@@ -12,9 +12,14 @@ export default function AllPlayers() {
       {error && <p className="alt">Something went wrong, please try again!</p>}
       {isLoading && <p className="alt">Loading Players...</p>}
       {/* <SearchBar /> */}
+      {data.data && <h2 className="player-heading">Click on a player to see more details</h2>}
       {data.data &&
         data.data.players.map((player) => (
-          <div key={player.id} className="player-card">
+          <div
+            key={player.id}
+            className="player-card"
+            onClick={() => navigate(`/player/${player["id"]}`)}
+          >
             <div className="player-image-container">
               <img src={player["imageUrl"]} alt={player["name"]} />
             </div>
