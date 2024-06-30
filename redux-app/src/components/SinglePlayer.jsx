@@ -4,17 +4,29 @@ import { useDeletePlayerMutation } from "../api/puppyBowlApi";
 
 export default function SinglePlayer() {
   let { player_id } = useParams();
+
   const { data = {}, error, isLoading } = useGetPlayerByIdQuery(player_id);
+
   const navigate = useNavigate();
+
   const [deletePlayer] = useDeletePlayerMutation();
-  const handleClick = (id) => {
-    try {
-       deletePlayer(id);
-       navigate('/all-players');
-    } catch (error) {
-      console.log(error);
+
+  const handleClick = async (id) => {
+    const result = await confirm(
+      "Are you sure you want to delete this player?"
+    );
+    if (result) {
+      try {
+        deletePlayer(id);
+        navigate("/all-players");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      return;
     }
   };
+
   if (error) {
     return <p className="alt">Something went wrong, please try again!</p>;
   }
@@ -65,7 +77,12 @@ export default function SinglePlayer() {
           >
             Go Back
           </button>
-          <button className="button" onClick={() => {handleClick(id)}}>
+          <button
+            className="button"
+            onClick={() => {
+              handleClick(id);
+            }}
+          >
             Delete Player
           </button>
         </div>

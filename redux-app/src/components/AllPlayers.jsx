@@ -7,22 +7,26 @@ export default function AllPlayers() {
   // When the component is first rendered, it will start the API fetch
   // It will re-render each time the fetch status changes (e.g., "loading", "data arrived", "error")
   const { data = {}, error, isLoading } = useFetchPlayersQuery();
+
   const navigate = useNavigate();
 
   // component state for player search feature
   const [searchParamter, setSearchParameter] = useState("");
 
   let newData;
-  if(data.data) {
-    newData = data.data.players
+  if (data.data) {
+    newData = data.data.players;
   }
- 
-  const playersToDisplay = (searchParamter && newData
+
+  const playersToDisplay =
+    searchParamter && newData
       ? newData.filter((player) => {
-          return player.name.toLowerCase().includes(searchParamter.toLowerCase());
+          return player.name
+            .toLowerCase()
+            .includes(searchParamter.toLowerCase());
         })
-      : newData);
-  
+      : newData;
+
   return (
     <div className="players">
       {error && <p className="alt">Something went wrong, please try again!</p>}
