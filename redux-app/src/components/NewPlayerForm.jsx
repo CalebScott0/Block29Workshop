@@ -34,13 +34,21 @@ export default function NewPlayerForm() {
       console.log(error);
     }
   };
+  const handleClick = () => {
+    try {
+      navigate("/all-players");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     reset();
   }, [isSubmitSuccessful]);
 
   return (
-    <div className="new-player-form">
+    <div className="form">
+      <h2>Player Sign-Up Form</h2>
       <form id="new-player-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Name:
@@ -53,7 +61,6 @@ export default function NewPlayerForm() {
         <fieldset>
           <legend>Status:</legend>
           <label>
-            Bench
             <input
               type="radio"
               name="status"
@@ -61,30 +68,40 @@ export default function NewPlayerForm() {
               {...register("status")}
               checked
             />
+            Bench
           </label>
           <label>
-            Field
             <input
               type="radio"
               name="status"
               value="field"
               {...register("status")}
             />
+            Field
           </label>
         </fieldset>
         <label>
           Player Image:
-          <input name="imageUrl" {...register("imageUrl")} />
+          <input
+            name="imageUrl"
+            placeholder="Image Url"
+            {...register("imageUrl")}
+          />
         </label>
         <label>
-          Team Name (optional):
+          Team Name:
           <select name="teamId" form="new-player-form" {...register("teamId")}>
             <option value="">Select a team (optional)</option>
             <option value={730}>Ruff</option>
             <option value={731}>Fluff</option>
           </select>
         </label>
-        <input type="submit" />
+        <div className="button-group">
+          <input className="button" type="submit" />
+          <button className="button" onClick={() => handleClick()}>
+            Return to Players
+          </button>
+        </div>
       </form>
     </div>
   );

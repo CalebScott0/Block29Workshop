@@ -15,6 +15,10 @@
   text-align: center;
   font-size: 2rem;
 }
+h2 {
+  padding: 0.5em 0;
+  font-size: 2em;
+}
 
 nav {
   width: 100%;
@@ -23,13 +27,12 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
-  a{
+  a {
     color: white;
   }
 }
 .button {
-  font: bold 0.8em Arial;
-  text-decoration: none;
+  font: bold 1em Arial;
   background-color: #eeeeee;
   color: #333333;
   padding: 2px 6px;
@@ -39,7 +42,10 @@ nav {
   border-bottom: 1px solid #333333;
   border-left: 1px solid #cccccc;
 }
-
+.button-group {
+  display: flex;
+  justify-content: space-evenly;
+}
 .search-bar {
   font-size: 1.25em;
 }
@@ -52,10 +58,7 @@ nav {
     width: 100%;
     text-align: center;
     padding: 1em 0;
-    h2{
-     padding: 0.5em 0;
-    font-size: 2em;
-    }
+    
   }
   .player-card {
     width: 360px;
@@ -103,7 +106,6 @@ nav {
       letter-spacing: 1px;
     }
   }
- 
 }
 
 .single-player {
@@ -119,11 +121,47 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
   img {
     width: 400px;
     height: calc(100% - 10px);
     object-fit: cover;
+  }
+}
+
+.form {
+  width: 45vw;
+  margin: 2em auto;
+  h2 {
+    text-align: center;
+  }
+  label {
+    display: block;
+    padding: 0.5em 0;
+  }
+  input {
+    width: 100%;
+    margin-top: 0.25em;
+    padding: 5px;
+  }
+  input[type="radio"] {
+    width: unset;
+    margin-right: 4px;
+  }
+  input[type="submit"], button {
+    width: 30%;
+    height: 2em;
+  }
+  fieldset {
+    border: none;
+    margin-top: 0.5em;
+    label{
+      padding: 2px;
+    }
+  }
+  select{
+    padding: 5px;
+    margin-left: 4px;
+    width: 60%;
   }
 }

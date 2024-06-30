@@ -19,6 +19,11 @@
   font-size: 2rem;
 }
 
+h2 {
+  padding: 0.5em 0;
+  font-size: 2em;
+}
+
 nav {
   width: 100%;
   height: 10vh;
@@ -32,8 +37,7 @@ nav a {
 }
 
 .button {
-  font: bold 0.8em Arial;
-  text-decoration: none;
+  font: bold 1em Arial;
   background-color: #eeeeee;
   color: #333333;
   padding: 2px 6px;
@@ -42,6 +46,11 @@ nav a {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #cccccc;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .search-bar {
@@ -58,10 +67,6 @@ nav a {
   width: 100%;
   text-align: center;
   padding: 1em 0;
-}
-.players .player-heading h2 {
-  padding: 0.5em 0;
-  font-size: 2em;
 }
 .players .player-card {
   width: 360px;
@@ -130,4 +135,41 @@ nav a {
   height: calc(100% - 10px);
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.form {
+  width: 45vw;
+  margin: 2em auto;
+}
+.form h2 {
+  text-align: center;
+}
+.form label {
+  display: block;
+  padding: 0.5em 0;
+}
+.form input {
+  width: 100%;
+  margin-top: 0.25em;
+  padding: 5px;
+}
+.form input[type=radio] {
+  width: unset;
+  margin-right: 4px;
+}
+.form input[type=submit], .form button {
+  width: 30%;
+  height: 2em;
+}
+.form fieldset {
+  border: none;
+  margin-top: 0.5em;
+}
+.form fieldset label {
+  padding: 2px;
+}
+.form select {
+  padding: 5px;
+  margin-left: 4px;
+  width: 60%;
 }/*# sourceMappingURL=App.css.map */

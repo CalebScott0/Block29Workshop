@@ -69,6 +69,7 @@ export default function SinglePlayer() {
               ? status.charAt(0).toUpperCase().concat(status.slice(1))
               : "Team Unassigned"}
           </p>
+          <div className="button-group">
           <button
             className="button"
             onClick={() => {
@@ -85,6 +86,7 @@ export default function SinglePlayer() {
           >
             Delete Player
           </button>
+          </div>
         </div>
       </div>
     );
