@@ -14,7 +14,7 @@ export default function SinglePlayer() {
 
   const handleReturn = () => {
     try {
-      navigate(-1);
+      navigate("/all-players");
     } catch (error) {
       setErr("Trouble loading all players, please try again!");
     }
@@ -38,7 +38,9 @@ export default function SinglePlayer() {
   };
 
   if (error) {
-    return <p className="alt error bold">Something went wrong, please try again!</p>;
+    return (
+      <p className="alt error bold">Something went wrong, please try again!</p>
+    );
   }
   if (isLoading) {
     return <p className="alt loading bold">Loading Player...</p>;
@@ -50,11 +52,13 @@ export default function SinglePlayer() {
       <div className="single-player">
         {err && <h2 className="error">{err}</h2>}
         <div className="single-player-card">
-          <h2>{name}</h2>
-          <p>
-            <span className="bold">Player Id: </span>
-            {id}
-          </p>
+          <div className="card-header">
+            <h2>{name}</h2>
+            <p>
+              <span className="bold">Player Id: </span>
+              {id}
+            </p>
+          </div>
           <div className="single-player-image-container">
             <img src={imageUrl} alt={name}></img>
           </div>
@@ -73,23 +77,18 @@ export default function SinglePlayer() {
                 {team["score"]}
               </p>
             )}
-          </div>
           <p>
             <span className="bold">Player Status: </span>
             {team
               ? status.charAt(0).toUpperCase().concat(status.slice(1))
               : "Team Unassigned"}
           </p>
+          </div>
           <div className="button-group">
-            <button
-              className="button"
-              onClick={() => 
-                handleReturn()
-              }
-            >
+            <button className="button not-delete-button" onClick={() => handleReturn()}>
               Go Back
             </button>
-            <button className="button" onClick={() => handleDelete(id)}>
+            <button className="button delete" onClick={() => handleDelete(id)}>
               Delete Player
             </button>
           </div>

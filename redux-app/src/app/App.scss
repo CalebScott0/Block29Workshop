@@ -1,3 +1,8 @@
+$border-top: 1px solid #959595;
+$border-right: 1px solid #1a1919;
+$border-bottom: 1px solid #1a1919;
+$border-left: 1px solid #959595;
+$background: linear-gradient(45deg, #000000, transparent);
 * {
   margin: 0;
   box-sizing: border-box;
@@ -6,6 +11,12 @@
 }
 .App {
   width: 100vw;
+}
+body {
+  background-image: url("./dog-bone-background.jpg");
+  // background-repeat: no-repeat;
+  background-attachment: fixed;
+  // background-size: cover;
 }
 .bold {
   font-weight: 600;
@@ -20,6 +31,9 @@
 .error {
   color: red;
   text-align: center;
+}
+.form-error {
+  color: red;
 }
 h2 {
   padding: 0.5em 0;
@@ -41,45 +55,82 @@ nav {
   font: bold 1em Arial;
   background-color: #eeeeee;
   color: #333333;
-  padding: 2px 6px;
+  min-width: 100px;
+  padding: 4px 6px;
   margin-top: 5px;
   border-top: 1px solid #cccccc;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #cccccc;
+  border-radius: 2px;
+}
+.button:hover {
+  cursor: pointer;
 }
 .button-group {
   display: flex;
   justify-content: space-evenly;
 }
-.search-bar {
-  font-size: 1.25em;
+.not-delete-button:hover {
+  background-color: #b3b2b2;
+  color: #0e0d0d;
+  border-top: $border-top;
+  border-right: $border-right;
+  border-bottom: $border-bottom;
+  border-left: $border-left;
 }
+.submit:hover {
+  background-color: rgb(13, 104, 13);
+  border-top: $border-top;
+  border-right: $border-right;
+  border-bottom: $border-bottom;
+  border-left: $border-left;
+}
+.delete:hover {
+  background-color: rgb(251, 48, 48);
+  color: #000000;
+  border-top: 1px solid #666666;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #666666;
+}
+
 .players {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  background-color: rgb(86, 97, 107);
+  color: beige;
+
+
   .player-heading {
     width: 100%;
     text-align: center;
     padding: 1em 0;
-    
+    font-size: 1.25em;
   }
   .player-card {
     width: 360px;
     height: 420px;
     margin: 10px;
     overflow: hidden;
-    border: 5px solid black;
+    background-image: $background;
+    border: 5px groove rgb(33, 32, 32);
     white-space: nowrap;
+    position: relative;
+    transition: transform 0.3s;
   }
   .player-card:hover {
+    cursor: pointer;
     white-space: normal;
     h2,
     p {
       width: 300px;
     }
+    transform: translateY(-5px) scale(1.01);
   }
 
   .player-image-container {
@@ -121,6 +172,15 @@ nav {
   .single-player-card {
     max-width: 600px;
     margin: 0 auto;
+    background-image: $background;
+    background-color: rgb(45, 44, 44);
+    box-shadow: 0 0 10px 5px rgb(40, 39, 39);
+    color: beige;
+    border-top: 2px solid #333333;
+    border-right: 2px solid #1a1919;
+    border-bottom: 2px solid #1a1919;
+    border-left: 2px solid #333333;
+    padding: 1em 1em 2em 1em;
     // text-align: center;
   }
   .single-player-image-container {
@@ -134,9 +194,34 @@ nav {
     height: calc(100% - 10px);
     object-fit: cover;
   }
+  .card-header {
+    width: 400px;
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      overflow-wrap:break-word;
+    }
+  }
+  .single-player-details {
+    margin-top: 1em;
+    width: 400px;
+    margin: 0 auto;
+    padding: 5px 0;
+    p {
+      padding: 5px 0;
+    }
+    p,
+    span {
+      font-size: 1.25rem;
+    }
+  }
 }
 
 .form {
+  background-color: beige;
+  border: 2px solid rgb(45, 44, 44);
+  padding: 0 1em 4em;
   width: 45vw;
   margin: 2em auto;
   h2 {
@@ -144,31 +229,46 @@ nav {
   }
   label {
     display: block;
-    padding: 0.5em 0;
+    padding: 1em 0;
   }
   input {
     width: 100%;
     margin-top: 0.25em;
     padding: 5px;
+    border-radius: 5px;
   }
   input[type="radio"] {
     width: unset;
     margin-right: 4px;
   }
-  input[type="submit"], button {
+  input[type="submit"],
+  button {
     width: 35%;
-    padding: .5em 0;
+    padding: 0.5em 0;
+    margin-top: 1em;
   }
   fieldset {
     border: none;
     margin-top: 0.5em;
-    label{
+    label {
       padding: 2px;
     }
   }
-  select{
+  select {
     padding: 5px;
     margin-left: 4px;
     width: 60%;
+    border-radius: 5px;
+  }
+  select:hover{
+    cursor: pointer;
+  }
+}
+.search-bar {
+  font-size: 1.25rem;
+  input {
+    margin-left: 0.25em;
+    padding: 5px;
+    border-radius: 5px;
   }
 }

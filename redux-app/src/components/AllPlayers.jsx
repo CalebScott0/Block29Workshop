@@ -86,7 +86,7 @@ export default function AllPlayers() {
                   {"Unassigned"}
                 </p>
               )}
-              <button className="button" onClick={() => handleClick(player.id)}>
+              <button className="button not-delete-button" onClick={() => handleClick(player.id)}>
                 See more info
               </button>
             </div>

@@ -118,8 +118,8 @@ export default function NewPlayerForm() {
           </select>
         </label>
         <div className="button-group">
-          <input className="button" type="submit" />
-          <button className="button" onClick={() => handleClick()}>
+          <input className="submit button" type="submit" />
+          <button className="button not-delete-button" onClick={() => handleClick()}>
             Return to Players
           </button>
         </div>
